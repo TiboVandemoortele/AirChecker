@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}
+    CO2
+{% endblock %}
+
+{% block CO2 %}
+    class="active"
+{% endblock %}
+
+{% block body %}
+    <div class="titel_pagina">
+        <div class="items-left">
+            <img class="imgWaarde" src="../static/images/CO2.png" height="422" width="499"/>
+            <p class="titleWaarde">Carbon dioxide</p>
+        </div>
+        <div class="Waardes_titel">
+            <span class="waarde">{{huidigeWaarde}}&nbsp ppm</span>
+            <span class="waarde">{{verschil}}</span>
+            <span class="waarde">{{kwaliteit}}</span>
+        </div>
+    </div>
+    <div class="data">
+        <ul>
+            <li>
+                <table class="andere">
+                    <tr>
+                        <th>date</th>
+                        <th>time</th>
+                        <th>CO2 [ppm]</th>
+                        <th>difference [ppm]</th>
+                        <th>quality</th>
+                    </tr>
+
+                        {% for resultaat in waardes %}
+                    <tr>
+                        {% for meetwaarde in resultaat %}
+                            <td>{{ meetwaarde }}&nbsp&nbsp</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+
+
+                </table>
+
+            </li>
+            <li>
+                <div class="graph settings">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+//                            {{list_waardes_graf}}
+                            var data = google.visualization.arrayToDataTable([
+          ['Date,time', 'CO2[ppm]'],['2017-06-18 23:20:19', 635], ['2017-06-18 23:19:23', 695], ['2017-06-18 23:18:25', 635], ['2017-06-18 23:17:29', 612], ['2017-06-18 23:16:33', 601], ['2017-06-18 23:15:37', 549], ['2017-06-18 23:14:42', 590], ['2017-06-18 23:13:44', 721], ['2017-06-18 23:12:48', 695], ['2017-06-18 23:11:52', 623]
+
+        ]);
+                            var options = {
+                            title: 'CO [Geen CO, gevaar]',
+                            curveType: 'line',
+                            legend: { position: 'bottom' }
+                            };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                            chart.draw(data, options);
+                        }
+                        </script>
+                    </div>
+                    <div class="graph_foto">
+                        <div id="curve_chart" style="width: 600px; height: 332px; margin-top: 30px"></div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

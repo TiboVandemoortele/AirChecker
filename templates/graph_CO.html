@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Datum', 'Bertje', 'Petra43','febe50'],
+          ['27/05',  66,        47,         52],
+          ['28/05',  57,        42,         63],
+          ['29/05',  63,        39,         57],
+          ['30/05',  49,        51,         68]
+        ]);
+
+        var options = {
+          title: 'luchtvochtigheid (%)',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 600px; height: 332px"></div>
+  </body>
+</html>

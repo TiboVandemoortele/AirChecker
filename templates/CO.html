@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+    CO
+{% endblock %}
+
+{% block CO %}
+    class="active"
+{% endblock %}
+
+{% block body %}
+    <div class="titel_pagina">
+        <div class="items-left">
+            <img class="imgWaarde" src="../static/images/CO.png" height="422" width="499"/>
+            <p class="titleWaarde">Carbon monoxide</p>
+        </div>
+        <div class="Waardes_titel">
+            <span class="waarde">{{huidigeWaarde}}</span>
+            <span class="waarde">{{kwaliteit}}</span>
+        </div>
+    </div>
+    <div class="data">
+        <ul>
+            <li>
+                <table class="andere">
+                    <tr>
+                        <th>date</th>
+                        <th>time</th>
+                        <th>CO</th>
+                        <th>kwaliteit</th>
+                    </tr>
+                    {% for resultaat in waardes %}
+                    <tr>
+                        {% for meetwaarde in resultaat %}
+                            <td>{{meetwaarde}}&nbsp&nbsp</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </li>
+            <li>
+                <div class="graph settings">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([['2017-06-17 23:59:27', 3], ['2017-06-17 23:59:03', 1], ['2017-06-17 23:58:33', 1], ['2017-06-17 23:58:05', 1], ['2017-06-17 23:57:50', 1], ['2017-06-17 23:57:28', 1], ['2017-06-17 23:57:03', 1], ['2017-06-17 23:56:46', 1], ['2017-06-17 23:56:37', 1], ['2017-06-17 23:56:29', 1]]);
+
+                            var options = {
+                            title: 'temp[°C]/temp[°F]',
+                            curveType: 'line',
+                            legend: { position: 'bottom' }
+                            };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                            chart.draw(data, options);
+                        }
+                        </script>
+                    </div>
+                    <div class="graph_foto">
+                        <div id="curve_chart" style="width: 600px; height: 332px; margin-top: 30px"></div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

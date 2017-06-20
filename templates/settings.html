@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+    settings
+{% endblock %}
+
+{% block settings %}
+    class="active"
+{% endblock %}
+
+{% block body %}
+<!--werkt niet door fout met jinja, hij wil de url for niet inladen-->
+<div class="settings">
+    <form action="{{url_for(settings_form)}}">
+    <div class="settings_tijd">
+        <span>Time between measurements</span>
+        <input type="text" name="minuten">
+    </div>
+    <div class="settings_relay">
+        <p>relay on/off</p><input type="checkbox" name="relay">
+        <p>safety relay gasses</p><input type="checkbox" name="safety_relay">
+        <p>ventilator relay</p><input type="checkbox" name="motorrelay">
+    </div>
+    <div class="btn_apply"><input type="submit" name="apply"></div>
+</form>
+</div>
+
+
+{% endblock %}

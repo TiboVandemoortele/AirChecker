@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Air-checker - {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="../static/css/reset.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static",filename="../static/css/style.css") }}">
+
+</head>
+<body>
+<div class="header">
+    <ul>
+        <li><div class="logo_homepage"><img src="../static/images/logo.png" height="422" width="499"/></div></li>
+
+    </ul>
+
+</div>
+
+<div class="menu">
+
+
+    <nav class="navigatie">
+    <ul>
+
+        <li><a {% block home %}{% endblock %} href="{{ url_for("homepage") }}">Home</a></li>
+        <li><a {% block CO %}{% endblock %} href="{{ url_for("CO")}}">CO</a></li>
+        <li><a {% block CO2 %}{% endblock %} href="{{ url_for("CO2")  }}">CO2</a></li>
+        <li><a {% block humidity %}{% endblock %} href="{{ url_for("humidity")    }}">humidity</a></li>
+        <li><a {% block temperature %}{% endblock %} href="{{ url_for("temperature")    }}">temperature</a></li>
+        <li><a {% block settings %}{% endblock %} href="{{ url_for("settings")    }}">settings</a></li>
+    </ul>
+</nav>
+</div>
+
+{% block body %}
+{% endblock %}
+<footer class="wrapper">
+    <div class="container_footer">
+    <ul>
+        <li><h1>contact</h1></li>
+        <li><h3>e-mail: tibo.vandemoortele@student.howest.be</h3></li>
+        <li><h3>phone number: 0470896589</h3></li>
+    </ul>
+
+
+    </div>
+</footer>
+
+</body>
+</html>

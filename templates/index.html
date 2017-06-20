@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block home %}
+    class="active"
+{% endblock %}
+
+{% block body %}
+    <div class="index_containers">
+        <ul>
+            <li>
+                <img src="../static/images/CO.png" height="422" width="499"/>
+                <h1>carbon monoxide</h1>
+                <h3>value: {{huidigeWaardeCO}}</h3>
+                <div class="btn_more"><a href="{{url_for("CO")}}">More</a></div>
+            </li>
+            <li>
+                <img src="../static/images/CO2.png" height="422" width="499"/>
+                <h1>carbon dioxide</h1>
+
+                <h3>value: {{huidigeWaardeCO2}}ppm </h3>
+                <div class="btn_more"><a href="{{url_for("CO2")}}">More</a></div>
+            </li>
+            <li>
+                <img src="../static/images/Temperature.png" height="422" width="499"/>
+                <h1>temperature</h1>
+
+                <h3>value: {{huidigeWaardeC}}°C</h3>
+                <div class="btn_more"><a href="{{url_for("temperature")}}">More</a></div>
+            </li>
+            <li>
+                <img src="../static/images/humidity.png" height="422" width="499"/>
+                <h1>humidity</h1>
+
+                <h3>value:{{huidigeWaardeP}}%</h3>
+                <div class="btn_more"><a href="{{url_for("humidity")}}">More</a></div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

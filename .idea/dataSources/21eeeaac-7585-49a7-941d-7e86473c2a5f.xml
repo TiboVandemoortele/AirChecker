@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="AirChecker@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="AirChecker">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <table id="6" parent="2" name="co"/>
+    <table id="7" parent="2" name="co2"/>
+    <table id="8" parent="2" name="luchtvochtigheid"/>
+    <table id="9" parent="2" name="relatieve_kwaliteit"/>
+    <table id="10" parent="2" name="relay"/>
+    <table id="11" parent="2" name="systeem"/>
+    <table id="12" parent="2" name="temperatuur"/>
+    <table id="13" parent="2" name="time_between"/>
+    <column id="14" parent="6" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="6" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="16" parent="6" name="Time">
+      <Position>3</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="17" parent="6" name="CO_aanwezig">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="18" parent="6" name="Relatieve_kwaliteit_ID">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="19" parent="6" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="7" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="7" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="22" parent="7" name="Time">
+      <Position>3</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="23" parent="7" name="Waarde_ppm">
+      <Position>4</Position>
+      <DataType>decimal(15,1)|0</DataType>
+    </column>
+    <column id="24" parent="7" name="Stijging_daling_ppm">
+      <Position>5</Position>
+      <DataType>decimal(15,1)|0</DataType>
+    </column>
+    <column id="25" parent="7" name="relatieve_kwaliteit_ID">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="26" parent="7" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="8" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="8" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="29" parent="8" name="Time">
+      <Position>3</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="30" parent="8" name="Waarde_procent">
+      <Position>4</Position>
+      <DataType>decimal(5,1)|0</DataType>
+    </column>
+    <column id="31" parent="8" name="Stijging_daling_procent">
+      <Position>5</Position>
+      <DataType>decimal(5,1)|0</DataType>
+    </column>
+    <column id="32" parent="8" name="Relatieve_kwaliteit_ID">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="33" parent="8" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="9" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="9" name="kwaliteit">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <key id="36" parent="9" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="10" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="10" name="state">
+      <Position>2</Position>
+      <DataType>varchar(5)|0</DataType>
+    </column>
+    <column id="39" parent="10" name="relay">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="40" parent="10" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="41" parent="11" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="11" name="Temperatuur_ID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="43" parent="11" name="CO_ID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="44" parent="11" name="CO2_ID">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="45" parent="11" name="Luchtvochtigheid_ID">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="46" parent="11" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="47" parent="12" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="12" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="49" parent="12" name="Time">
+      <Position>3</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="50" parent="12" name="Waarde_celcius">
+      <Position>4</Position>
+      <DataType>decimal(5,1)|0</DataType>
+    </column>
+    <column id="51" parent="12" name="waarde_fahrenheit">
+      <Position>6</Position>
+      <DataType>decimal(5,1)|0</DataType>
+    </column>
+    <column id="52" parent="12" name="stijging_daling_fahrenheit">
+      <Position>7</Position>
+      <DataType>decimal(5,1)|0</DataType>
+    </column>
+    <column id="53" parent="12" name="Stijging_daling_C">
+      <Position>5</Position>
+      <DataType>decimal(5,1)|0</DataType>
+    </column>
+    <key id="54" parent="12" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="13" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="13" name="minutes">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="57" parent="13" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

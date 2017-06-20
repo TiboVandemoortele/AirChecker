@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}
+    temperature
+{% endblock %}
+
+{% block temperature %}
+    class="active"
+{% endblock %}
+
+{% block body %}
+    <div class="titel_pagina">
+        <div class="items-left">
+            <img class="imgWaarde" src="../static/images/Temperature.png" height="422" width="499"/>
+            <p class="titleWaarde">temperature</p>
+        </div>
+        <div class="Waardes_titel">
+            <span class="waarde">{{huidigeWaardeC}} °C</span>
+            <span class="waarde">{{verschilC}}</span>
+            <span class="waarde">{{huidigeWaardeF}} °F</span>
+            <span class="waarde">{{verschilF}}</span>
+
+        </div>
+    </div>
+    <div class="data">
+        <ul>
+            <li>
+                <table class="temp">
+                    <tr>
+                        <th>date</th>
+                        <th>time</th>
+                        <th>temp °C</th>
+                        <th>difference °C</th>
+                        <th>temp °F</th>
+                        <th>difference °F</th>
+                    </tr>
+                    {% for resultaat in waardes %}
+                    <tr>
+                        {% for meetwaarde in resultaat %}
+                            <td>{{meetwaarde}}&nbsp</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </li>
+            <li>
+                <div class="graph_settings">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Datum', 'temp[°C]'],['2017-06-17 23:59:27', 25.9], ['2017-06-17 23:59:03', 25.8], ['2017-06-17 23:58:33', 25.8], ['2017-06-17 23:58:05', 25.9], ['2017-06-17 23:57:50', 25.9], ['2017-06-17 23:57:28', 26.0], ['2017-06-17 23:57:03', 26.1], ['2017-06-17 23:56:46', 26.1], ['2017-06-17 23:56:37', 26.1], ['2017-06-17 23:56:29', 26.1]
+]);
+
+                            var options = {
+                            title: 'CO [Geen CO = 1, gevaar = 3]',
+                            curveType: 'line',
+                            legend: { position: 'bottom' }
+                            };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                            chart.draw(data, options);
+                        }
+                        </script>
+                    </div>
+                    <div class="graph_foto">
+                        <div id="curve_chart" style="width: 600px; height: 332px; margin-top: 30px"></div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

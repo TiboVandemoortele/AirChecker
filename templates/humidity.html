@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}
+    humidity
+{% endblock %}
+
+{% block humidity %}
+    class="active"
+{% endblock %}
+
+{% block body %}
+    <div class="titel_pagina">
+        <div class="items-left">
+            <img class="imgWaarde" src="../static/images/humidity.png" height="422" width="499"/>
+            <p class="titleWaarde">humidity</p>
+        </div>
+        <div class="Waardes_titel">
+            <span class="waarde">{{huidigeWaarde}}</span>
+            <span class="waarde">{{verschil}}</span>
+            <span class="waarde">{{kwaliteit}}</span>
+        </div>
+    </div>
+    <div class="data">
+        <ul>
+            <li>
+                <table class="andere">
+                    <tr>
+                        <th>date</th>
+                        <th>time</th>
+                        <th>Waarde %</th>
+                        <th>difference</th>
+                        <th>quality</th>
+                    </tr>
+                    {% for resultaat in waardes %}
+                    <tr>
+                        {% for meetwaarde in resultaat %}
+                            <td>{{meetwaarde}}&nbsp&nbsp</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </li>
+            <li>
+                <div class="graph settings">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Datum', 'humidity [%]'],['2017-06-17 23:59:27', 64.7], ['2017-06-17 23:59:03', 64.2], ['2017-06-17 23:58:33', 64.0], ['2017-06-17 23:58:05', 63.9], ['2017-06-17 23:57:50', 63.8], ['2017-06-17 23:57:28', 63.8], ['2017-06-17 23:57:03', 63.7], ['2017-06-17 23:56:46', 63.6], ['2017-06-17 23:56:37', 63.6], ['2017-06-17 23:56:29', 63.5]]);
+
+                            var options = {
+                            title: 'Humidity [%]',
+                            curveType: 'line',
+                            legend: { position: 'bottom' }
+                            };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                            chart.draw(data, options);
+                        }
+                        </script>
+                    </div>
+                    <div class="graph_foto">
+                        <div id="curve_chart" style="width: 600px; height: 332px; margin-top: 30px"></div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
